@@ -1,3 +1,5 @@
+import 'package:agenda/text_box.dart';
+import 'package:appbar_textfield/appbar_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,13 +12,32 @@ class _ContactListState extends State<ContactList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Minha Agenda'),
-        actions: [
-          Icon(Icons.add)
-        ],
+      appBar: AppBarTextField(),
+      body: ListView(children: [
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+        Text('Contato', style: TextStyle(fontSize: 50),),
+      ],),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add)
       ),
-      body: Text('Ola Mundo!'),
     );
   }
 }

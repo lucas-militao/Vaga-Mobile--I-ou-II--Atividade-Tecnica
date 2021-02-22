@@ -11,7 +11,6 @@ class AppWidget extends StatelessWidget {
       return MaterialApp(
         theme: ThemeData(brightness: Brightness.light),
         home: ContactList(),
-        
       );
     });
   }

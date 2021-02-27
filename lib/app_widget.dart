@@ -1,3 +1,4 @@
+import 'package:agenda/layout/contact_creation.dart';
 import 'package:agenda/layout/contact_info.dart';
 import 'package:agenda/layout/contact_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,8 @@ class AppWidget extends StatelessWidget {
         initialRoute: '/home',
         routes: {
           '/home': (context) => ContactList(),
-          '/create': (context) => ContactInfo(),
+          '/create': (context) => ContactCreation(),
+          '/info': (context) => ContactInfo(),
         },
       );
     });

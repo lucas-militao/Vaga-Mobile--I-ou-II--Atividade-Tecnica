@@ -1,4 +1,4 @@
-import 'package:agenda/layout/contact_item.dart';
+import 'package:agenda/layout/contact_info.dart';
 import 'package:agenda/layout/contact_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,11 @@ class AppWidget extends StatelessWidget {
     return Builder(builder: (context) {
       return MaterialApp(
         theme: ThemeData(brightness: Brightness.light),
-        home: ContactItem(),
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => ContactList(),
+          '/create': (context) => ContactInfo(),
+        },
       );
     });
   }

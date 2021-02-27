@@ -21,7 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  appbar_textfield: ^1.0.1+1
+  appbar_textfield: ^1.0.1+1 
+  contacts_service: ^0.4.6
   flutter:
     sdk: flutter
 

@@ -1,3 +1,4 @@
+import 'package:agenda/widgets/my_contact_item.dart';
 import 'package:appbar_textfield/appbar_textfield.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,24 +11,6 @@ class ContactList extends StatefulWidget {
   _ContactListState createState() => _ContactListState();
 }
 
-Widget ContactItem(Contact contactItem, BuildContext context) {
-  return InkWell(
-      child: Container(child: Padding(
-      padding: const EdgeInsets.all(10), 
-      child: Text(contactItem.displayName, style: TextStyle(fontSize: 18.0),),),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey
-        )
-      ),
-    ),
-    onTap: () {
-      contact = contactItem;
-      Navigator.of(context).pushNamed('/info');
-    },
-  );
-}
-
 class _ContactListState extends State<ContactList> {
 
   @override
@@ -36,6 +19,7 @@ class _ContactListState extends State<ContactList> {
       appBar: AppBarTextField(
         centerTitle: true,
         title: Text('Minha Agenda'),
+        
       ),
       body: Column(children: [
         Expanded(
@@ -43,7 +27,13 @@ class _ContactListState extends State<ContactList> {
             shrinkWrap: true,
             itemCount: contacts.length,
             itemBuilder: (context, i) {
-              return ContactItem(contacts[i], context);
+              return MyContactItem(
+                contactItem: contacts[i],
+                onClick: () {
+                    selectedContact = contacts[i];
+                    Navigator.of(context).pushNamed('/info');
+                },
+              );
             },
           ),
         )

@@ -1,19 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyTextFormField extends StatelessWidget {
+class MyTextField extends StatelessWidget {
   final String hintText;
   final Function validator;
   final bool isNumber;
   final Function onSaved;
-  
-MyTextFormField({
-    this.hintText,
-    this.validator,
+  final TextEditingController controller;
+
+  const MyTextField({
+    Key key, 
+    this.hintText = '', 
+    this.validator, 
+    this.isNumber = false, 
     this.onSaved,
-    this.isNumber = false,
-  });
-  
+    this.controller,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,13 +24,12 @@ MyTextFormField({
         decoration: InputDecoration(
           hintText: hintText,
           contentPadding: EdgeInsets.all(15.0),
-          border: InputBorder.none,
-          filled: true,
-          fillColor: Colors.grey[200],
+          border: OutlineInputBorder(),
         ),
         validator: validator,
         onSaved: onSaved,
         keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+        controller: controller,
       ),
     );
   }

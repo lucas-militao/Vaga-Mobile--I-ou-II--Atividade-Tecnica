@@ -23,7 +23,7 @@ class _ContactInfoState extends State<ContactInfo> {
           actions: <Widget>[
             IconButton(icon: Icon(Icons.edit), 
               onPressed: () {
-
+                Navigator.pushNamed(context, '/change');
               }),
             IconButton(
               icon: Icon(Icons.clear), 

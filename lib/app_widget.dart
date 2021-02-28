@@ -1,3 +1,4 @@
+import 'package:agenda/layout/contact_change.dart';
 import 'package:agenda/layout/contact_creation.dart';
 import 'package:agenda/layout/contact_info.dart';
 import 'package:agenda/layout/contact_list.dart';
@@ -17,6 +18,7 @@ class AppWidget extends StatelessWidget {
           '/home': (context) => ContactList(),
           '/create': (context) => ContactCreation(),
           '/info': (context) => ContactInfo(),
+          '/change': (context) => ContactChange(),
         },
       );
     });

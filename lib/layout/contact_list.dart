@@ -1,6 +1,5 @@
 import 'package:agenda/widgets/my_contact_item.dart';
 import 'package:appbar_textfield/appbar_textfield.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

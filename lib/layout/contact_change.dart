@@ -1,4 +1,5 @@
 import 'package:agenda/widgets/my_contact_change_form.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class ContactChange extends StatefulWidget {
 }
 
 class _ContactChangeState extends State<ContactChange> {
+  final _contactChangeForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,10 @@ class _ContactChangeState extends State<ContactChange> {
         centerTitle: true,
       ),
       body: Column(
-        children: [MyContactChangeForm(contactSelected: selectedContact)],
+        children: [MyContactChangeForm(
+          contactSelected: selectedContact,
+          contactChangeForm: _contactChangeForm,
+        )],
       ),
     );
   }

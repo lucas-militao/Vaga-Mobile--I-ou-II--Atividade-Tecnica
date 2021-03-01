@@ -1,3 +1,4 @@
+import 'package:agenda/globals.dart';
 import 'package:agenda/widgets/my_text_field.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,41 +6,21 @@ import 'package:flutter/material.dart';
 
 class MyContactChangeForm extends StatelessWidget {
   final Contact contactSelected;
+  final GlobalKey<FormState> contactChangeForm;
 
   var phoneFieldsController = List<TextEditingController>();
   var nameFieldController = TextEditingController();
+  var phoneFieldController = TextEditingController();
 
-  MyContactChangeForm(
-      {Key key,
-      this.contactSelected})
+  MyContactChangeForm({Key key, this.contactSelected, this.contactChangeForm})
       : super(key: key);
-
-  Widget PhoneFields(Iterable<Item> phones) {
-    var listWidgets = new List<Widget>();
-    var listPhones = contactSelected.phones.toList();
-    for (var i = 0; i < phones.length; i++) {
-      TextEditingController newController = TextEditingController();
-      newController.text = listPhones[i].value;
-      phoneFieldsController.add(TextEditingController());
-      listWidgets.add(MyTextField(
-        controller: newController,
-        isNumber: true,
-        validator: (value) {
-          if (value.isEmpty()) {
-            return 'Digite um número';
-          }
-        },
-      ));
-    }
-    return new Column(children: listWidgets,);
-  }
 
   @override
   Widget build(BuildContext context) {
-    
     nameFieldController.text = contactSelected.displayName;
-
+    phoneFieldController.text = contactSelected.phones.toList()[0].value.toString();
     return Form(
+      key: contactChangeForm,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -52,7 +33,29 @@ class MyContactChangeForm extends StatelessWidget {
                 }
               },
             ),
-            PhoneFields(contactSelected.phones),
+            MyTextField(
+              controller: phoneFieldController,
+              validator: (value) {
+                if (value.isEmpty()) {
+                  return 'Digite um numero';
+                }
+              },
+            ),
+            RaisedButton(
+              child: Text('Salvar'),
+              onPressed: () {
+                if(contactChangeForm.currentState.validate()) {
+                  var index = contacts.indexOf(contactSelected);
+                  var contactUpdated = Contact(
+                    displayName: nameFieldController.text,
+                    phones: [Item(value: phoneFieldsController[0].text)]
+                  );
+                  contacts[index] = contactUpdated;
+                  Navigator.pushNamedAndRemoveUntil(
+                        context, "/home", (r) => false);
+                }
+              } 
+            )
           ],
         ),
       ),

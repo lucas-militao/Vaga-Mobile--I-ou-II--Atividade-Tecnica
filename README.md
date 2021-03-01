@@ -1,16 +1,21 @@
-# agenda
+# Aplicativo Agenda
 
-A new Flutter project.
+## Como Abrir Projeto
+OBS: Tenha o VSCode instalado.
 
-## Getting Started
+1. Acessar terminal
+2. Ir até pasta do projeto
+3. Executar comando code *Nome do projeto*
 
-This project is a starting point for a Flutter application.
+## Para Executar
+OBS: Necessário ter um simulador instalado.
 
-A few resources to get you started if this is your first Flutter project:
+1. Abra o simulador Android.
+2. Vá em RUN e clique em *Start Debugging*.
+3. O Aplicativo irá abrir no simulador.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Sobre o que foi desenvolvido
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+O Desafio conta com as funcionalidades de Listar, Adicionar, Remover o contato. 
+
+

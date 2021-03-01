@@ -16,6 +16,6 @@ OBS: Necessário ter um simulador instalado.
 
 ## Sobre o que foi desenvolvido
 
-O Desafio conta com as funcionalidades de Listar, Adicionar, Remover o contato. 
+O Desafio conta com as funcionalidades de Listar, Adicionar e Remover o contato. Estava quase finalizando a parte de alterar contato, mas fiquei estancado. 
 
 

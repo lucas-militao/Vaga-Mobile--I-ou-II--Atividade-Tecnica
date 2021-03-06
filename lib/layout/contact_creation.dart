@@ -1,9 +1,7 @@
-import 'package:agenda/globals.dart';
 import 'package:agenda/widgets/my_contact_creation_form.dart';
-import 'package:agenda/widgets/my_text_field.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:agenda/database/agenda_database.dart';
 
 class ContactCreation extends StatefulWidget {
   @override
@@ -26,7 +24,7 @@ class _ContactCreationState extends State<ContactCreation> {
         body: MyContactCreationForm(
           formKey: _formKey,
           nameFieldController: _contactName,
-          numberFieldController: _contactNumber,
+          telephoneFieldController: _contactNumber,
         )
     );
   }

@@ -1,5 +1,6 @@
+import 'package:agenda/database/agenda_database.dart';
+import 'package:agenda/model/contact.dart';
 import 'package:agenda/widgets/my_text_field.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,12 +9,12 @@ import '../globals.dart';
 class MyContactCreationForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController nameFieldController;
-  final TextEditingController numberFieldController;
+  final TextEditingController telephoneFieldController;
 
   const MyContactCreationForm(
       {Key key,
       this.nameFieldController,
-      this.numberFieldController,
+      this.telephoneFieldController,
       this.formKey})
       : super(key: key);
 
@@ -38,8 +39,9 @@ class MyContactCreationForm extends StatelessWidget {
               height: 15,
             ),
             MyTextField(
-              controller: numberFieldController,
+              controller: telephoneFieldController,
               hintText: 'Número',
+              isNumber: true,
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Digite um número';
@@ -49,13 +51,11 @@ class MyContactCreationForm extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   if (formKey.currentState.validate()) {
-                    Contact newContact = Contact(
-                        displayName: nameFieldController.text,
-                        phones: [Item(value: numberFieldController.text)]);
-                    contacts.add(newContact);
-                    print(newContact.displayName);
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, "/home", (r) => false);
+                    var newContact = Contact(
+                      0, 
+                      nameFieldController.text,
+                      telephoneFieldController.text);
+                    DBProvider.db.newContact(newContact);
                   }
                 },
                 child: Text('Salvar'))

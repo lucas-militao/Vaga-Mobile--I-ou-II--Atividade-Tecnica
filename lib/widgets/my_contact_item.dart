@@ -1,4 +1,4 @@
-import 'package:contacts_service/contacts_service.dart';
+import 'package:agenda/model/contact.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class MyContactItem extends StatelessWidget {
             children: [
               Container(
                 child: Text(
-                  contactItem.displayName,
+                  contactItem.name,
                   style: TextStyle(
                     fontSize: 18.0,
                   ),

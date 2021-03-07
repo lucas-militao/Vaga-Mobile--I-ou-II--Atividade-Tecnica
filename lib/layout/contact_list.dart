@@ -1,3 +1,5 @@
+import 'package:agenda/database/agenda_database.dart';
+import 'package:agenda/model/contact.dart';
 import 'package:agenda/widgets/my_contact_item.dart';
 import 'package:appbar_textfield/appbar_textfield.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +13,18 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
+  Future _contacts;
+  
+  getContacts() async {
+    var contacts = await DBProvider.db.fetchContacts();
+    return contacts;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _contacts = getContacts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +34,17 @@ class _ContactListState extends State<ContactList> {
         title: Text('Minha Agenda'),
         
       ),
-      body: Column(children: [
-        Expanded(
-                  child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: contacts.length,
-            itemBuilder: (context, i) {
-              return MyContactItem(
-                contactItem: contacts[i],
-                onClick: () {
-                    selectedContact = contacts[i];
-                    Navigator.of(context).pushNamed('/info');
-                },
-              );
-            },
-          ),
-        )
-      ],),
+      body: FutureBuilder<dynamic>(
+        future: _contacts,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return MyContactItem(
+              contactItem: snapshot.data[0], 
+              onClick: () {
+
+              });
+          }
+        },),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {

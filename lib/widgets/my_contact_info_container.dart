@@ -1,4 +1,5 @@
-import 'package:contacts_service/contacts_service.dart';
+
+import 'package:agenda/model/contact.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,12 +21,11 @@ class MyContactInfoContainer extends StatelessWidget {
       ListView(
         shrinkWrap: true,
         children: [
-          for (var i in contact.phones)
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  i.value,
+                  contact.telephone,
                   style: TextStyle(color: Colors.black, fontSize: 18.0),
                 ),
               ),

@@ -19,7 +19,7 @@ class _ContactInfoState extends State<ContactInfo> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(selectedContact.displayName),
+          title: Text(selectedContact.name),
           actions: <Widget>[
             IconButton(icon: Icon(Icons.edit), 
               onPressed: () {

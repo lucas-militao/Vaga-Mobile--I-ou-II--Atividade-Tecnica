@@ -1,6 +1,6 @@
 import 'package:agenda/globals.dart';
+import 'package:agenda/model/contact.dart';
 import 'package:agenda/widgets/my_text_field.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +17,8 @@ class MyContactChangeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    nameFieldController.text = contactSelected.displayName;
-    phoneFieldController.text = contactSelected.phones.toList()[0].value.toString();
+    nameFieldController.text = contactSelected.name;
+    phoneFieldController.text = contactSelected.telephone;
     return Form(
       key: contactChangeForm,
       child: Padding(
@@ -45,12 +45,7 @@ class MyContactChangeForm extends StatelessWidget {
               child: Text('Salvar'),
               onPressed: () {
                 if(contactChangeForm.currentState.validate()) {
-                  var index = contacts.indexOf(contactSelected);
-                  var contactUpdated = Contact(
-                    displayName: nameFieldController.text,
-                    phones: [Item(value: phoneFieldsController[0].text)]
-                  );
-                  contacts[index] = contactUpdated;
+      
                   Navigator.pushNamedAndRemoveUntil(
                         context, "/home", (r) => false);
                 }

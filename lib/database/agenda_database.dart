@@ -36,16 +36,29 @@ class DBProvider {
 
     var res = await db.rawInsert('''
       INSERT INTO contacts (
-        id, name, telephone
-      ) VALUES (?, ?, ?)
-    ''', [0, newContact.name, newContact.telephone]);
+        name, telephone
+      ) VALUES (?, ?)
+    ''', [newContact.name, newContact.telephone]);
 
     return res;
   }
 
+  Future<List<Contact>> fetchContacts() async {
+    final db = await database;
+    final maps = await db.query("contacts");
+
+    return List.generate(maps.length, (i) {
+      return Contact(
+        maps[i]['id'],
+        maps[i]['name'],
+        maps[i]['telephone']
+      );
+    });
+  }
+
   Future<dynamic> getContact() async {
     final db = await database;
-    var res = await db.query("contact");
+    var res = await db.query("contacts");
     if(res.length == 0) {
       return null;
     } else {

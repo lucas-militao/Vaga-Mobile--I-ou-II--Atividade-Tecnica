@@ -1,4 +1,5 @@
-import 'package:contacts_service/contacts_service.dart';
+
+import 'model/contact.dart';
 
 List<Contact> contacts = [];
 List<Contact> contactsFiltered = [];

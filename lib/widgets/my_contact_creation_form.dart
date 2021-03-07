@@ -56,6 +56,8 @@ class MyContactCreationForm extends StatelessWidget {
                       nameFieldController.text,
                       telephoneFieldController.text);
                     DBProvider.db.newContact(newContact);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, "/home", (r) => false);
                   }
                 },
                 child: Text('Salvar'))

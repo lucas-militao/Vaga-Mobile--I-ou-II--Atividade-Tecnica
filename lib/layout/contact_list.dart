@@ -38,11 +38,26 @@ class _ContactListState extends State<ContactList> {
         future: _contacts,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return MyContactItem(
-              contactItem: snapshot.data[0], 
-              onClick: () {
-
-              });
+            return Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                children: [
+                  ListView.builder(
+                    itemCount: snapshot.data.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, i) {
+                      return MyContactItem(
+                        contactItem: snapshot.data[i],
+                        onClick: () {
+                          selectedContact = snapshot.data[i];
+                          Navigator.of(context).pushNamed('/info');
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
+            );
           }
         },),
       floatingActionButton: FloatingActionButton(

@@ -56,14 +56,15 @@ class DBProvider {
     });
   }
 
-  Future<dynamic> getContact() async {
+  Future<int> deleteContact(int id) async {
     final db = await database;
-    var res = await db.query("contacts");
-    if(res.length == 0) {
-      return null;
-    } else {
-      var resMap = res[0];
-      return resMap.isNotEmpty ? resMap : Null;
-    }
+
+    int result = await db.delete(
+      'contacts',
+      where: "id = ?",
+      whereArgs: [id]
+    );
+
+    return result;
   }
 }

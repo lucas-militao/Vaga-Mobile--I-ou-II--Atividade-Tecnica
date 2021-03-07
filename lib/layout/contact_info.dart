@@ -1,3 +1,4 @@
+import 'package:agenda/database/agenda_database.dart';
 import 'package:agenda/widgets/my_contact_info_container.dart';
 import 'package:agenda/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,11 @@ class ContactInfo extends StatefulWidget {
 
 Widget getTelephones(String number) {
   return Text(number);
+}
+
+deleteContact(int id) async {
+  var result = await DBProvider.db.deleteContact(id);
+  return result;
 }
 
 class _ContactInfoState extends State<ContactInfo> {
@@ -28,7 +34,7 @@ class _ContactInfoState extends State<ContactInfo> {
             IconButton(
               icon: Icon(Icons.clear), 
               onPressed: () {
-                contacts.remove(selectedContact);
+                deleteContact(selectedContact.id);
                 Navigator.pushNamedAndRemoveUntil(
                         context, "/home", (r) => false);
               })

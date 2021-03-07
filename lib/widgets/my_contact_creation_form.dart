@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../globals.dart';
 
 class MyContactCreationForm extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
+  final GlobalKey<FormState> contactCreationFormKey;
   final TextEditingController nameFieldController;
   final TextEditingController telephoneFieldController;
 
@@ -15,13 +15,13 @@ class MyContactCreationForm extends StatelessWidget {
       {Key key,
       this.nameFieldController,
       this.telephoneFieldController,
-      this.formKey})
+      this.contactCreationFormKey})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: contactCreationFormKey,
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -50,7 +50,7 @@ class MyContactCreationForm extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  if (formKey.currentState.validate()) {
+                  if (contactCreationFormKey.currentState.validate()) {
                     var newContact = Contact(
                       0, 
                       nameFieldController.text,

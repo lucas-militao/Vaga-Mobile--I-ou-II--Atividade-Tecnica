@@ -67,4 +67,15 @@ class DBProvider {
 
     return result;
   }
+
+  Future<int> updateContact(int id, Contact contactUpdated) async {
+    final db = await database;
+
+    int result = await db.update(
+      "contacts", 
+      contactUpdated.toMap(),
+      where: "id = ?",
+      whereArgs: [id]
+    );
+  }
 }

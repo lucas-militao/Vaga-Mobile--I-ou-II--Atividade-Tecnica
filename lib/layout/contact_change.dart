@@ -5,13 +5,25 @@ import 'package:flutter/material.dart';
 
 import '../globals.dart';
 
+
+
 class ContactChange extends StatefulWidget {
   @override
   _ContactChangeState createState() => _ContactChangeState();
 }
 
 class _ContactChangeState extends State<ContactChange> {
-  final _contactChangeForm = GlobalKey<FormState>();
+  final nameFieldController = TextEditingController();
+  final phoneFieldController = TextEditingController();
+  GlobalKey<FormState> editFormKey;
+
+
+  @override
+  void initState() {
+    super.initState();
+    editFormKey = GlobalKey<FormState>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +34,9 @@ class _ContactChangeState extends State<ContactChange> {
       body: Column(
         children: [MyContactChangeForm(
           contactSelected: selectedContact,
-          contactChangeForm: _contactChangeForm,
+          changeFormKey: editFormKey,
+          nameFieldController: nameFieldController,
+          phoneFieldController: phoneFieldController,
         )],
       ),
     );

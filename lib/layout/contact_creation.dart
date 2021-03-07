@@ -1,7 +1,6 @@
 import 'package:agenda/widgets/my_contact_creation_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:agenda/database/agenda_database.dart';
 
 class ContactCreation extends StatefulWidget {
   @override
@@ -9,7 +8,13 @@ class ContactCreation extends StatefulWidget {
 }
 
 class _ContactCreationState extends State<ContactCreation> {
-  final _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> creationFormKey;
+
+  @override
+  void initState() {
+    super.initState();
+    creationFormKey = GlobalKey<FormState>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class _ContactCreationState extends State<ContactCreation> {
           title: Text('Adicionar Contato'),
         ),
         body: MyContactCreationForm(
-          formKey: _formKey,
+          contactCreationFormKey: creationFormKey,
           nameFieldController: _contactName,
           telephoneFieldController: _contactNumber,
         )
